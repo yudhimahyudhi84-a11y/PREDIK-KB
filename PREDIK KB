@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PREDIK FIXXWIN HUDZXY</title>
+<style>
+body{background:#050b18;color:#8cf;text-align:center;font-family:sans-serif;padding:30px;}
+h1{color:#2af;text-shadow:0 0 15px #2af,0 0 30px #08f;font-size:28px;}
+.naga{color:#2af;font-size:50px;text-shadow:0 0 20px #2af;animation:nap 2s infinite;}
+@keyframes nap{0%{opacity:0.7;}50%{opacity:1;}100%{opacity:0.7;}}
+.kotak{background:linear-gradient(145deg,#081528,#040a12);border:2px solid #2af;border-radius:12px;padding:30px;margin-top:20px;box-shadow:0 0 20px #2af5,inset 0 0 40px #2af2;}
+input{background:#040a12;border:1px solid #2af;color:#fff;padding:10px;width:200px;font-size:18px;border-radius:6px;text-align:center;}
+button{background:linear-gradient(180deg,#0a2540,#051220);border:1px solid #2af;color:#fff;padding:14px 40px;font-size:18px;font-weight:bold;border-radius:6px;cursor:pointer;margin-top:10px;box-shadow:0 0 10px #2af4;text-shadow:0 0 5px #2af;letter-spacing:2px;}
+button:hover{background:linear-gradient(180deg,#0f3055,#081830);box-shadow:0 0 20px #2af8;}
+.prediksi{font-size:32px;font-weight:bold;margin:30px 0;color:#0ff;text-shadow:0 0 10px #0ff;letter-spacing:4px;}
+.hasilAkhir{margin-top:25px;display:none;}
+.benar{color:#0f8;font-weight:bold;font-size:20px;}
+.salah{color:#f55;font-weight:bold;font-size:20px;}
+.desc{color:#5af;font-style:italic;}
+</style>
+</head>
+<body>
+
+<div class="naga">🐉</div>
+<h1>PREDIK FIXXWIN HUDZXY</h1>
+<p>Masukan kunci untuk membuka ramalan</p>
+
+<div class="kotak" id="areaKunci">
+<p>KUNCI AKSES</p>
+<input type="text" id="kunci" placeholder="Masukkan Key">
+<br>
+<button onclick="cekKunci()">KONFIRMASI</button>
+</div>
+
+<div class="kotak" id="areaMain" style="display:none;">
+<p class="desc">PREDIK FIXXWIN HUDZXY memberikan ramalan sekali saja</p>
+
+<div class="prediksi" id="tampilPrediksi">???</div>
+
+<button onclick="kasihPrediksi()" id="btnPrediksi">🐉 TERIMA RAMALAN</button>
+<button onclick="kembaliAwal()" id="btnKembali" style="display:none;">KEMBALI</button>
+
+<div class="hasilAkhir" id="areaHasil">
+<hr style="border:1px solid #2af3;margin:20px 0;">
+<h3>HASIL AKHIR</h3>
+<div id="hasil"></div>
+</div>
+</div>
+
+<script>
+const KEY = "210513";
+let prediksi = '';
+let hasilAkhir = {};
+
+function acakPrediksi(){
+  prediksi = Math.random() < 0.5 ? 'K' : 'B';
+  if(Math.random() < 0.5){
+    hasilAkhir = {nilai: Math.floor(Math.random()*10)+20, jenis: 'K'};
+  }else{
+    hasilAkhir = {nilai: Math.floor(Math.random()*20)+31, jenis: 'B'};
+  }
+}
+
+function cekKunci(){
+  let masuk = document.getElementById('kunci').value;
+  if(masuk === KEY){
+    document.getElementById('areaKunci').style.display = 'none';
+    document.getElementById('areaMain').style.display = 'block';
+    acakPrediksi();
+  }else{
+    alert('Kunci salah');
+  }
+}
+
+function kasihPrediksi(){
+  document.getElementById('tampilPrediksi').textContent = 'ALL MATCH = ' + prediksi;
+  document.getElementById('btnPrediksi').style.display = 'none';
+  document.getElementById('btnKembali').style.display = 'inline-block';
+}
+
+function kembaliAwal(){
+  // Reset semua ke tampilan awal
+  document.getElementById('areaMain').style.display = 'none';
+  document.getElementById('areaKunci').style.display = 'block';
+  document.getElementById('kunci').value = '';
+  document.getElementById('tampilPrediksi').textContent = '???';
+  document.getElementById('btnPrediksi').style.display = 'inline-block';
+  document.getElementById('btnKembali').style.display = 'none';
+  document.getElementById('areaHasil').style.display = 'none';
+  prediksi = '';
+  hasilAkhir = {};
+}
+</script>
+
+</body>
+</html>
